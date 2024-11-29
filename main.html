@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <!-- Importowanie czcionki Montserrat z Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Animacja fadeIn dla całej strony */
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000; /* Czarne tło strony */
+            color: white;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInPage 3s ease-in-out; /* Dodanie animacji fadeIn */
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            letter-spacing: 1rem;
+            color: transparent;
+            text-transform: uppercase;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 
+                0 4px 10px rgba(232, 28, 255, 0.5),
+                0 4px 10px rgba(64, 201, 255, 0.5);
+        }
+
+        /* Animacja pojawiania się tekstu */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Animacja dla kart */
+        @keyframes fadeInCard {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animacja dla dolnego napisu */
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Styl dla tła z efektami cząsteczek */
+        #tsparticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ustawienie za innymi elementami */
+        }
+
+        /* Karty */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 10rem;
+            animation: fadeInCard 2s ease-in-out forwards;
+        }
+
+        .card {
+            position: relative;
+            width: 250px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow:
+            0 4px 10px rgba(232, 28, 255, 0.5),
+            0 4px 10px rgba(64, 201, 255, 0.5);
+            filter: blur(5px);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            animation: fadeInCard 2s ease-in-out forwards; /* Dodana animacja */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card:hover {
+            filter: blur(0);
+            transform: translateY(-10px);
+        }
+
+        .card-content {
+            position: absolute;
+            z-index: 1;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            z-index: 0;
+        }
+
+        .card-text {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e81cff;
+            animation: fadeInText 2s ease-in-out forwards; /* Dodana animacja */
+        }
+    </style>
+</head>
+<body>
+    <h1>VALDi</h1>
+    <!-- Kontener dla cząsteczek -->
+    <div id="tsparticles"></div>
+
+    <div class="cards-container">
+        <!-- Karta 1 -->
+        <div class="card">
+            <img src="https://i05.appmifile.com/642_item_pl/24/10/2023/5290dfc5e800d294c42137d25b11ad65!400x400!85.png" alt="Redmi Note 12 Pro 5G">
+            <div class="card-content">Redmi Note 12 Pro 5G (ruby)</div>
+        </div>
+        <!-- Karta 2 -->
+        <div class="card">
+            <img src="https://i05.appmifile.com/892_item_pl/22/01/2024/c7798a1603bf3f705fbab97537d6c806!400x400!85.png" alt="Redmi Note 13 Pro Plus 5G">
+            <div class="card-content">Redmi Note 13 Pro Plus 5G (zircon)</div>
+        </div>
+    </div>
+    <div class="card-text">Check out these websites!</div>
+
+    <!-- Załadowanie skryptu tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        // Inicjalizacja tsParticles
+        particlesJS("tsparticles", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
