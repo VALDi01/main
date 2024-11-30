@@ -6,7 +6,6 @@
     <title>Welcome!</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Animacja fadeIn dla całej strony */
         @keyframes fadeInPage {
             0% { opacity: 0; }
             100% { opacity: 1; }
@@ -21,20 +20,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
             flex-direction: column;
+            text-align: center;
+            min-height: 100vh;
             animation: fadeInPage 3s ease-in-out;
         }
 
         h1 {
-            font-size: 6rem;
+            font-size: 4rem;
             font-weight: 700;
-            letter-spacing: 1rem;
+            letter-spacing: 0.5rem;
             color: transparent;
             text-transform: uppercase;
-            margin: 0;
+            margin: 1rem 0;
             background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -52,15 +50,16 @@
         .cards-container {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 10rem;
-            animation: fadeInCard 2s ease-in-out forwards;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+            width: 100%;
         }
 
         .card {
             position: relative;
-            width: 250px;
-            height: 350px;
+            width: 180px;
+            height: 260px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -84,28 +83,79 @@
         .card-content {
             position: absolute;
             z-index: 1;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 700;
             color: white;
+            text-align: center;
+            padding: 0 0.5rem;
         }
 
         .card-text {
             margin-top: 1rem;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #e81cff;
+        }
+
+        /* Media queries for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+                letter-spacing: 0.3rem;
+            }
+
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 160px;
+                height: 240px;
+            }
+
+            .card-content {
+                font-size: 0.9rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.2rem;
+            }
+
+            .cards-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .card {
+                width: 140px;
+                height: 200px;
+            }
+
+            .card-content {
+                font-size: 0.8rem;
+            }
+
+            .card-text {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <h1>VALDi</h1>
     <div class="cards-container">
-        <!-- Karta 1 -->
         <div class="card" onclick="window.location.href='https://valdi01.github.io/RUBY-ESSENTIALS/index.html'">
             <img src="https://i05.appmifile.com/642_item_pl/24/10/2023/5290dfc5e800d294c42137d25b11ad65!400x400!85.png" alt="Redmi Note 12 Pro 5G">
             <div class="card-content">Redmi Note 12 Pro 5G (ruby)</div>
         </div>
-        <!-- Karta 2 -->
         <div class="card" onclick="showMessage(this)">
             <img src="https://i05.appmifile.com/892_item_pl/22/01/2024/c7798a1603bf3f705fbab97537d6c806!400x400!85.png" alt="Redmi Note 13 Pro Plus 5G">
             <div class="card-content">Redmi Note 13 Pro Plus 5G (zircon)</div>
@@ -113,7 +163,6 @@
     </div>
     <div class="card-text">Check out these websites!</div>
 
-    <!-- Skrypt tsParticles -->
     <script>
         function showMessage(card) {
             const content = card.querySelector('.card-content');
